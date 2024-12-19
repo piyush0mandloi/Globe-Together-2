@@ -26,12 +26,12 @@ const PostsSection = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-8 bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Posts</h1>
+      <div className="relative mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">Globe Gather : </h1>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          className="absolute top-0 right-0 bg-blue-500 text-white px-5 py-2 rounded-lg shadow-md transition-all hover:shadow-lg hover:shadow-blue-400 hover:bg-blue-600"
           onClick={() => setShowModal(true)}
         >
           Add Post +
@@ -39,11 +39,11 @@ const PostsSection = () => {
       </div>
 
       {/* Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-col gap-6">
         {posts.length > 0 ? (
           posts.map((post, index) => <PostCard key={index} post={post} />)
         ) : (
-          <p className="text-gray-600 col-span-full">No posts available.</p>
+          <p className="text-gray-700 text-center">No posts available.</p>
         )}
       </div>
 

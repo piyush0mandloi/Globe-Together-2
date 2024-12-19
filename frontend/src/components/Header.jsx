@@ -9,7 +9,7 @@ const Header = () => {
         <p className="text-[18px] mb-[20px]">Connect with like-minded travelers and embark on unforgettable journeys together.</p>
         <div className="search-bar flex-1 relative max-w-[600px] mx-auto">
           <input className=" w-[90%] px-[12px] py-[8px] rounded-[20px] border border-gray-300 outline-none text-[16px] focus:border-[#0a9396] focus:shadow-[0_0_40px_#0a9396] focus:outline-none" type="text" placeholder="Explore destinations, trips, and more..." />
-          <span className="icon absolute t-1/2 right-[45px] transform -translate-y-1/2 text-[18px] text-[#0a9396] cursor-pointer ">🔍</span>
+          <span className="absolute right-[70px]  text-[30px] text-[#0a9396] cursor-pointer ">🔍</span>
         </div> 
       </div>
     </header>

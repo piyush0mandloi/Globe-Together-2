@@ -1,9 +1,8 @@
-import { useState , useRef } from "react";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import chatbotImg from "../assets/download.png";
+import { useState, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "../components/Navbar"
-import Header from "../components/Header"
+import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 import TrendingPage from "../components/TrendingPage";
 import Footer from "../components/Footer";
 import backgroundImage from "../public/assets/bgImg.jpg";
@@ -16,53 +15,56 @@ import MoreDestinations from "../components/MoreDestinations";
 import Chatbot from "../components/Chatbot";
 
 const Dashboard = () => {
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isSignupModalOpen, setSignupModalOpen] = useState(false);
+  const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
 
-    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-    const [isSignupModalOpen, setSignupModalOpen] = useState(false);
-    const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  // Ref for Posts Section
+  const postsSectionRef = useRef(null);
+  // Scroll function
+  const scrollToPosts = () => {
+    if (postsSectionRef.current) {
+      postsSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-  
-    // Ref for Posts Section
-    const postsSectionRef = useRef(null);
-     // Scroll function
-     const scrollToPosts = () => {
-      if (postsSectionRef.current) {
-        postsSectionRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
+  return (
+    <Router>
+      <div className="App">
+        <div
+          className="main-header relative w-full h-[360px] bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        >
+          <Navbar
+            openLogin={() => setLoginModalOpen(true)}
+            scrollToPosts={scrollToPosts} // Pass scroll function to Navbar//
+          />
+          <Header />
+        </div>
 
-    return (
-        <Router>
-    <div className="App">
-      <div className="main-header relative w-full h-[360px] bg-cover bg-center z-0"
-    style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <Navbar openLogin={()=>setLoginModalOpen(true)}
-           scrollToPosts={scrollToPosts} // Pass scroll function to Navbar// 
-           />
-        <Header />
-      </div>
-
-      <Routes>
-        <Route path="/" element={
-          <>
-          <TrendingPage />
-          <div ref={postsSectionRef}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <TrendingPage />
+                <div ref={postsSectionRef}>
                   <PostsSection />
-          </div>
-          </>
-        } />
-         <Route path="/destinations" element={<MoreDestinations />} />
-        {/* <Route path="/posts" element={<PostsSection />} /> New Route for Posts */}
-      </Routes>
+                </div>
+              </>
+            }
+          />
+          <Route path="/destinations" element={<MoreDestinations />} />
+          {/* <Route path="/posts" element={<PostsSection />} /> New Route for Posts */}
+        </Routes>
 
-     
-      <Footer />
+        <Footer />
 
-       {/* Notification Popup */}
-       <Notification />
+        {/* Notification Popup */}
+        <Notification />
 
-       {/* Modal */}
-       <Signin
+        {/* Modal */}
+        <Signin
           isOpen={isLoginModalOpen}
           onClose={() => setLoginModalOpen(false)}
           onSignupOpen={() => {
@@ -83,7 +85,7 @@ const Dashboard = () => {
             setLoginModalOpen(true);
           }}
         />
-         <ForgetPassword
+        <ForgetPassword
           isOpen={isForgotPasswordOpen}
           onClose={() => setForgotPasswordOpen(false)}
           onLoginOpen={() => {
@@ -93,10 +95,10 @@ const Dashboard = () => {
         />
 
         {/* Chatbot popup */}
-    </div>
-    <Chatbot />
+      </div>
+      <Chatbot />
     </Router>
-    )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

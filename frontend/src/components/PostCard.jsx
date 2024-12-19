@@ -2,38 +2,42 @@ import React from "react";
 
 const PostCard = ({ post }) => {
   return (
-    <div className="bg-white border border-gray-300 shadow-md rounded-lg p-4 flex flex-col gap-4 w-full max-w-md">
-      {/* Top Section */}
-      <div className="flex items-center gap-4">
-        <img
-          src={post.image}
-          alt="User"
-          className="w-12 h-12 rounded-full object-cover border"
-        />
-        <h3 className="text-lg font-semibold">{post.name}</h3>
-      </div>
+    <div className="flex flex-col md:flex-row items-center bg-white border border-gray-200 shadow-lg rounded-lg p-6 gap-4">
+      {/* User Image */}
+      <img
+        src={post.image}
+        alt="User"
+        className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-sm"
+      />
 
-      {/* Details */}
-      <div className="text-gray-600 text-sm">
-        <p>
-          <strong>Date:</strong> {post.date}
-        </p>
-        <p>
-          <strong>Destination:</strong> {post.destination}
-        </p>
-        <p>
-          <strong>Description:</strong> {post.description}
-        </p>
-        <p>
-          <strong>People Needed:</strong> {post.peopleNeeded}
-        </p>
+      {/* User Details */}
+      <div className="flex flex-col flex-grow">
+        <h2 className="text-4xl font-bold text-gray-800 mb-4 ml-8">Name:{post.name}</h2>
+        <div className="text-xl text-gray-700 space-y-2 ml-8">
+          <p>
+            <strong className="font-semibold">Date:</strong> {post.date}
+          </p>
+          <p>
+            <strong className="font-semibold">Destination:</strong> {post.destination}
+          </p>
+          <p>
+            <strong className="font-semibold">Description:</strong> {post.description}
+          </p>
+          <p>
+            <strong className="font-semibold">People Needed:</strong> {post.peopleNeeded}
+          </p>
+        </div>
       </div>
-
-      {/* Bottom Chat Button */}
-      <button className="self-end bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+      {/* Join Group Button */}
+      <button className="bg-blue-500 text-white px-7 py-4 rounded-xl shadow-lg hover:shadow-lg hover:bg-blue-700 transition">
+        Join Group
+      </button>
+       {/* Chat Button */}
+       <button className="bg-blue-500 text-white px-7 py-4 ml-6 rounded-lg shadow-md hover:shadow-lg hover:bg-blue-700 transition">
         Chat
       </button>
     </div>
+    
   );
 };
 

@@ -19,4 +19,4 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-export default Card
+export default Card;
